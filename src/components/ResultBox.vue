@@ -15,11 +15,40 @@
 
     <!-- refresh btn -->
     <button-item
-      @click="$emit('refresh')"
-      :size="4"
-      :movement="-0.5"
-      :font-size="1.5"
-      icon="sync" />
+    icon="pi pi-sync"
+    @click="$emit('refresh')"
+    :size="4"
+    :movement="-0.5"
+    :font-size="1.5" />
+
+    <button-item
+    icon="pi pi-question"
+    @click="showModal"
+    :size="4"
+    :movement="-0.5"
+    :font-size="1.5"
+    style="margin: 0.5rem" />
+
+    <modal-item
+      v-if="modalVisible"
+      @cancel="hideModal">
+
+   <template v-slot:header>
+    About the app
+   </template>
+
+   <template v-slot:body>
+    Mix three colors to create the perfect one!
+   </template>
+
+   <template v-slot:footer>
+    <button-item
+    icon="pi pi-thumbs-up"
+    style="margin: 0.5rem"
+    :movement="0" />
+   </template>
+
+</modal-item>
 
   </div>
 </template>
@@ -27,6 +56,8 @@
 <script>
 import ButtonItem from './shared/ButtonItem'
 import FlaskItem from './shared/FlaskItem'
+import ModalItem from './shared/ModalItem'
+import ModalMixin from '@/mixins/ModalMixin'
 
 export default {
   name: 'ResultsBox',
@@ -36,6 +67,9 @@ export default {
       required: true
     }
   },
+  data: () => ({
+  }),
+  mixins: [ModalMixin],
   computed: {
     mixtureEffectFill () {
       const [redCol, greenCol, blueCol] = this.mixtures.map(item => Math.floor(item.amount * 2.5))
@@ -44,7 +78,8 @@ export default {
   },
   components: {
     ButtonItem,
-    FlaskItem
+    FlaskItem,
+    ModalItem
   }
 }
 </script>

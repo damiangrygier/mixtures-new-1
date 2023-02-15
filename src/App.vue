@@ -5,6 +5,10 @@
       <!-- header -->
       <app-header />
 
+      <!-- menu -->
+      <!-- <app-menu /> -->
+      <app-menu2 />
+
       <!-- color mixin -->
       <color-mixin />
 
@@ -16,12 +20,16 @@
 import './styles/global.scss'
 import AppHeader from './components/AppHeader'
 import ColorMixin from './components/ColorMixin'
+// import AppMenu from './components/AppMenu'
+import AppMenu2 from './components/AppMenu2'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    ColorMixin
+    ColorMixin,
+    // AppMenu,
+    AppMenu2
   }
 }
 </script>
