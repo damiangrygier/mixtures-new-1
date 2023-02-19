@@ -13,6 +13,8 @@
       style="margin: 3rem auto"
       :ammount="100" />
 
+      <p v-text="mixtureEffectFill" />
+
     <!-- refresh btn -->
     <button-item
     icon="pi pi-sync"
@@ -29,6 +31,15 @@
     :font-size="1.5"
     style="margin: 0.5rem" />
 
+    <router-link :to="colorPath">
+    <button-item
+    icon="pi pi-share-alt"
+    :size="4"
+    :movement="-0.5"
+    :font-size="1.5"
+    style="margin: 0.5rem"></button-item></router-link>
+
+  <fade-animation>
     <modal-item
       v-if="modalVisible"
       @cancel="hideModal">
@@ -48,7 +59,8 @@
     :movement="0" />
    </template>
 
-</modal-item>
+    </modal-item>
+  </fade-animation>
 
   </div>
 </template>
@@ -58,6 +70,7 @@ import ButtonItem from './shared/ButtonItem'
 import FlaskItem from './shared/FlaskItem'
 import ModalItem from './shared/ModalItem'
 import ModalMixin from '@/mixins/ModalMixin'
+import FadeAnimation from './shared/FadeAnimation'
 
 export default {
   name: 'ResultsBox',
@@ -73,13 +86,23 @@ export default {
   computed: {
     mixtureEffectFill () {
       const [redCol, greenCol, blueCol] = this.mixtures.map(item => Math.floor(item.amount * 2.5))
-      return '#' + (1 << 24 | redCol << 16 | greenCol << 8 | blueCol).toString(16).slice(1)
+      // return '#' + (1 << 24 | redCol << 16 | greenCol << 8 | blueCol).toString(16).slice(1)
+      return `rgb(${redCol}, ${greenCol}, ${blueCol})`
+    },
+    colorPath () {
+      const [redCol, greenCol, blueCol] = this.mixtures.map(item => Math.floor(item.amount * 2.5))
+      return `/color/${redCol}/${greenCol}/${blueCol}`
     }
   },
   components: {
     ButtonItem,
     FlaskItem,
-    ModalItem
+    ModalItem,
+    FadeAnimation
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

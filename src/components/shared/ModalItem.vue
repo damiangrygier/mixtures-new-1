@@ -34,15 +34,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables';
 .fog {
+  @include width-height-100;
+  @include top-left-0;
   background-color: #21D4FD;
   background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
   position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
-  width: 100%;
-  height: 100%;
   z-index: 2;
 }
 

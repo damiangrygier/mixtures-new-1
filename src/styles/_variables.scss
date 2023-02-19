@@ -1,0 +1,22 @@
+@mixin border-radius-50 {
+    border-radius: 50%;
+}
+
+@mixin width-height-100 {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin top-left-0 {
+    top: 0;
+    left: 0;
+}
+
+@mixin box-shadow-1 {
+    box-shadow: 0 20px 40px 0 rgba(107,154,212,.3);
+}
+
+@mixin title {
+    color: #637892;
+    margin: 2rem;
+}

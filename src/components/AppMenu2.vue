@@ -1,27 +1,32 @@
 <template>
     <div class="main">
-        <button><i class="pi pi-home"></i> Home</button>
-        <button><i class="pi pi-filter"></i> Mixin</button>
-        <button><i class="pi pi-info"></i> About</button>
+        <router-link to="/"><button><i class="pi pi-home"></i> Home</button></router-link>
+        <router-link to="/mixin"><button><i class="pi pi-filter"></i> Mixin</button></router-link>
+        <router-link to="/about"><button><i class="pi pi-info"></i> About</button></router-link>
     </div>
 </template>
 
 <script>
+
 export default {
   name: 'AppMenu2'
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables';
     .main {
+        @include box-shadow-1;
         display: flex;
+        align-items: center;
         height: 2.7rem;
         background-color: #f0f0f0;
         border-radius: 1rem;
-        box-shadow: 0 20px 40px 0 rgba(107,154,212,.3);
         overflow: hidden;
 
         button {
+            height: 2.7rem;
+            width: 5rem;
             border: 0;
             margin-left: 1rem;
             cursor: pointer;
@@ -31,5 +36,9 @@ export default {
                 padding-right: 5px;
             }
         }
+
+        button:hover {
+                background-color: #d8d8d8;
+            }
     }
 </style>

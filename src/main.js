@@ -1,12 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import PrimeVue from 'primevue/config'
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.min.css'
-import TabMenu from 'primevue/tabmenu'
+import router from './router'
+import 'animate.css/animate.min.css'
 
-createApp(App).mount('#app')
-App.use(PrimeVue)
-App.use('TabMenu', TabMenu)
+createApp(App).use(router).mount('#app')
