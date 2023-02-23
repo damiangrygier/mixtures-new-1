@@ -14,6 +14,7 @@
       :ammount="100" />
 
       <p v-text="mixtureEffectFill" />
+      <p>They are {{ colorsLength }} colors in your pocket!</p>
 
     <!-- refresh btn -->
     <button-item
@@ -38,6 +39,14 @@
     :movement="-0.5"
     :font-size="1.5"
     style="margin: 0.5rem"></button-item></router-link>
+
+    <button-item
+    @click="saveColor"
+    icon="pi pi-pencil"
+    :size="4"
+    :movement="-0.5"
+    :font-size="1.5"
+    style="margin: 0.5rem"></button-item>
 
   <fade-animation>
     <modal-item
@@ -66,6 +75,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 import ButtonItem from './shared/ButtonItem'
 import FlaskItem from './shared/FlaskItem'
 import ModalItem from './shared/ModalItem'
@@ -74,24 +85,22 @@ import FadeAnimation from './shared/FadeAnimation'
 
 export default {
   name: 'ResultsBox',
-  props: {
-    mixtures: {
-      type: Array,
-      required: true
-    }
-  },
-  data: () => ({
-  }),
   mixins: [ModalMixin],
   computed: {
+    ...mapGetters({ colorsLength: 'ColorsCount', mixtures: 'Mixtures' }),
     mixtureEffectFill () {
       const [redCol, greenCol, blueCol] = this.mixtures.map(item => Math.floor(item.amount * 2.5))
-      // return '#' + (1 << 24 | redCol << 16 | greenCol << 8 | blueCol).toString(16).slice(1)
       return `rgb(${redCol}, ${greenCol}, ${blueCol})`
     },
     colorPath () {
       const [redCol, greenCol, blueCol] = this.mixtures.map(item => Math.floor(item.amount * 2.5))
       return `/color/${redCol}/${greenCol}/${blueCol}`
+    }
+  },
+  methods: {
+    ...mapActions(['addColor']),
+    saveColor () {
+      this.addColor(this.mixtures)
     }
   },
   components: {

@@ -3,6 +3,7 @@
         <router-link to="/"><button><i class="pi pi-home"></i> Home</button></router-link>
         <router-link to="/mixin"><button><i class="pi pi-filter"></i> Mixin</button></router-link>
         <router-link to="/about"><button><i class="pi pi-info"></i> About</button></router-link>
+        <router-link to="/myColors"><button><i class="pi pi-palette"></i> My colors</button></router-link>
     </div>
 </template>
 
@@ -26,7 +27,7 @@ export default {
 
         button {
             height: 2.7rem;
-            width: 5rem;
+            width: 6rem;
             border: 0;
             margin-left: 1rem;
             cursor: pointer;
