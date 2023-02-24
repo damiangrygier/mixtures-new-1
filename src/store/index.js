@@ -53,7 +53,7 @@ export default createStore({
       state.colors.push(color)
     },
     REMOVE_COLOR (state, index) {
-      state.colors.splice(index)
+      state.colors.splice(index, 1)
     },
     CHANGE_COLOR_PLUS (state, index) {
       if (state.mixtures[index].amount === 100) return false
